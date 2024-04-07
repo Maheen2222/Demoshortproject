@@ -3,28 +3,24 @@ import '../styles/globals.css';
 import React, { useEffect } from 'react';
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import { analytics, firebaseLogEvent, setCurrentScreen } from '../firebaseConfig'; 
+import { logScreenView } from '../firebaseConfig'; 
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter();
 
   useEffect(() => {
     const trackPageView = (url: string) => {
-      // Ensure analytics is initialized and supported
-      analytics.then((instance) => {
-        if (instance) {
-          setCurrentScreen(instance, url);
-          firebaseLogEvent(instance, 'screen_view');
-        }
-      });
+      // Using the updated logScreenView function for custom page view events
+      logScreenView(url);
     };
 
-    router.events.on('routeChangeComplete', trackPageView);
-    // Track the initial page view
-    trackPageView(window.location.pathname);
+    // Listen to route changes and log page views
+    router.events.on('routeChangeComplete', (url: string) => trackPageView(url));
+    // Log the initial page view
+    trackPageView(window.location.pathname + window.location.search);
 
     return () => {
-      router.events.off('routeChangeComplete', trackPageView);
+      router.events.off('routeChangeComplete', (url: string) => trackPageView(url));
     };
   }, [router.events]);
 
