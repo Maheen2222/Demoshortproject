@@ -34,7 +34,7 @@ const TodosPage: React.FC<TodosProps> = ({ todos, page, totalPages }) => {
                       Title
                     </th>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                      Completed
+                      Status
                     </th>
                   </tr>
                 </thead>
