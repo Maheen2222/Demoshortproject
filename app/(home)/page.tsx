@@ -15,7 +15,7 @@ export default function Home() {
           <p className="py-6 text-white text-md md:text-lg leading-relaxed">
             Get started by navigating to your todo list and manage your tasks efficiently.
           </p>
-          <Link href="/todos">
+          <Link href="/todos?page=1">
             <button className="btn btn-primary text-white bg-purple-600 hover:bg-purple-900 transition duration-300 ease-in-out transform hover:-translate-y-1">
               View Todos
             </button>
