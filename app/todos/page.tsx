@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import { Suspense } from 'react';
 
 
 interface Todo {
@@ -41,6 +42,7 @@ const totalCount = totalCountResponse.data.length;
     
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -126,6 +128,7 @@ const totalCount = totalCountResponse.data.length;
         </div>
       </div>
     </div>
+    </Suspense>
   );
 };
 

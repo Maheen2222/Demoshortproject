@@ -1,9 +1,11 @@
 // pages/index.js
 import Link from 'next/link';
+import Image from 'next/image';
+import { Suspense } from 'react';
 
 export default function Home() {
   return (
-    
+    <Suspense>
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex flex-col lg:flex-row justify-between items-center space-y-8 lg:space-y-0">
 
@@ -24,10 +26,11 @@ export default function Home() {
 
         {/* Image Section */}
         <div className="flex justify-center lg:justify-end flex-1">
-          <img src="/todoIndex.png" className="w-full max-w-sm md:max-w-md lg:max-w-lg transition duration-500 ease-in-out transform hover:scale-105" alt="Todo App" />
+          <Image src="/todoIndex.png" className="w-full max-w-sm md:max-w-md lg:max-w-lg transition duration-500 ease-in-out transform hover:scale-105" alt="Todo App" />
         </div>
         
       </div>
     </div>
+    </Suspense>
   );
 }
